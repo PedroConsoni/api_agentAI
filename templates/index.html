@@ -3,90 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JCA</title>
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 40px;
-    }
-
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-
-    .box {
-      background: #fff;
-      width: 90%;
-      max-width: 600px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      padding: 12px 20px;
-      background: #10a37f;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    button:hover {
-      background: #0e8e70;
-    }
-
-    #result {
-      margin-top: 20px;
-      white-space: pre-wrap;
-      line-height: 1.5;
-      color: #444;
-    }
-  </style>
+  <title>Chat estilo GPT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <h1>Chat bot Policia Federal  </h1>
 
-  <div class="box">
-    <input id="prompt" placeholder="Digite algo...">
+  <h1>
+    Chat da Policia Federal
+  </h1>
+  <div id="chat"></div>
+  
+  <div id="inputArea">
+    <input id="prompt" placeholder="Digite sua mensagem...">
     <button onclick="sendPrompt()">Enviar</button>
-    <p id="result"></p>
   </div>
 
   <script>
     async function sendPrompt() {
       const prompt = document.getElementById("prompt").value;
+      if (!prompt.trim()) return;
 
+      // Exibir mensagem do usuário
+      addMessage(prompt, "user");
+
+      // Limpar campo
+      document.getElementById("prompt").value = "";
+
+      // Enviar para a API
       const res = await fetch("/api/gemini", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt })
       });
 
       const data = await res.json();
-      document.getElementById("result").innerText = data.response;
+
+      // Exibir resposta da IA
+      addMessage(data.response, "bot");
+    }
+
+    // Adiciona mensagens no chat
+    function addMessage(text, type) {
+      const chat = document.getElementById("chat");
+
+      const div = document.createElement("div");
+      div.className = type;
+      div.innerText = text;
+
+      chat.appendChild(div);
+
+      // Scroll automático para o final
+      chat.scrollTop = chat.scrollHeight;
     }
   </script>
+
 </body>
 </html>

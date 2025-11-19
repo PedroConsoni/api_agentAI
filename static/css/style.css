@@ -1,0 +1,92 @@
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0f;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ececec;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a1a1d;
+      margin: 0;
+      font-weight: normal;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Área onde as mensagens aparecem */
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* Mensagem do usuário (direita) */
+    .user {
+      align-self: flex-end;
+      background: #10a37f;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 70%;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+      white-space: pre-wrap;
+    }
+
+    /* Mensagem da IA (esquerda) */
+    .bot {
+      align-self: flex-start;
+      background: #1a1a1d;
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 70%;
+      border: 1px solid #2e2e32;
+      white-space: pre-wrap;
+      color: #dcdcdc;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Caixa inferior para digitar */
+    #inputArea {
+      display: flex;
+      padding: 15px;
+      background: #1a1a1d;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      background: #0f0f11;
+      border: 1px solid #333;
+      color: white;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #10a37f;
+    }
+
+    button {
+      padding: 14px 20px;
+      background: #10a37f;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0e8e70;
+    }
