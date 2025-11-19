@@ -1,3 +1,5 @@
+***The README you are accessing is in Portuguese-BR, if you prefer to access the README in English, [click here](README.md)***
+
 # Projeto: Pipeline de Dados da PRF + Agente de IA com SQLite
 
 Este projeto implementa um pipeline completo de **ETL (Extract, Transform, Load)** utilizando dados públicos da Polícia Rodoviária Federal (PRF), finalizando com a criação de um **agente de Inteligência Artificial** capaz de responder perguntas sobre os dados armazenados. Além disso, gráficos e análises são gerados automaticamente com base nas informações tratadas.
