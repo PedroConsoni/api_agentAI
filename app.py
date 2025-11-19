@@ -9,11 +9,6 @@ client = genai.Client()
 def index():
     return render_template("index.html")
 
-@app.route("/obout")
-def about():
-    return render_template("about.html")
-
-
 @app.route("/api/gemini", methods=["POST"])
 def gemini_api():
     data = request.json
