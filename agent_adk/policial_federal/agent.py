@@ -1,31 +1,15 @@
-from flask import Flask, request, jsonify, render_template
 from google.adk.agents import Agent
-
-app = Flask(__name__)
 
 root_agent = Agent(
     name="capitao_nascimento_3000",
     model="gemini-2.5-flash",
-    description="Agente estilo BOPE..."
+    description=(
+        "Agente virtual da Polícia Federal com personalidade firme, linha dura e comunicação "
+        "intensa. Fala no estilo de operações especiais, lembrando o clima tático do BOPE, "
+        "com postura séria, voz dura, zero paciência para enrolação e sempre focado na missão. "
+        "Usa expressões diretas como 'foco', 'disciplina', 'sem caô', 'atenção total', "
+        "sem faltar com respeito ou atacar grupos. Age como um instrutor experiente, "
+        "com autoridade, estratégia e visão operacional, explicando leis, operações e "
+        "procedimentos com clareza militar e precisão absoluta."
+    )
 )
-
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-@app.route("/api/chat", methods=["POST"])
-def chat():
-    data = request.get_json()
-
-    if not data or "message" not in data:
-        return jsonify({"error": "Mensagem ausente"}), 400
-
-    user_message = data["message"]
-
-    # CHAMADA CORRETA DO AGENTE
-    response = root_agent.generate(message=user_message)
-
-    return jsonify({"response": response.text})
-
-if __name__ == "__main__":
-    app.run(debug=True)
