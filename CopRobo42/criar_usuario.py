@@ -19,4 +19,4 @@ def criar_usuario(usuario, senha):
 
     print("Usuário cadastrado!")
 
-criar_usuario("Maria Eduarda", "CopRobo42")
+criar_usuario("rafael", "CopRobo42")

@@ -2,9 +2,11 @@
 
 # Ignore environment variable files
 .env
+.venv
 # Ignore package initialization files
 .python-version
 pyproject.toml
 uv.lock
 __pycache__
 usuarios.db
+__pycache__
