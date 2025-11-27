@@ -3,10 +3,6 @@ from google.adk.agents import Agent
 
 DB_PATH = "./medallion/gold/acidentes_final.db"
 
-
-# ---------------------------------------------------------
-# Função interna — Executa SELECT no banco
-# ---------------------------------------------------------
 def consultar_banco(query: str):
     """
     Executa SELECT no banco acidentes_final.db
@@ -74,7 +70,4 @@ root_agent = Agent(
     """
 )
 
-# ⬆ Importante:
-# Agora o agente NÃO usa ferramentas externas.
-# Você chamará as funções internas manualmente no seu endpoint.
  
